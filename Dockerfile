@@ -1,8 +1,14 @@
 FROM golang:latest as builder
-RUN mkdir /app
-ADD . /app/
-WORKDIR /app
-RUN go get -v
+RUN cat /etc/os-release
+
+ENV GOPATH=/go
+ENV PKG="github.com/brianonn/goword"
+RUN mkdir -p /go/src
+#RUN go get "${PKG}"
+ADD . "${GOPATH}/src/${PKG}"
+RUN cd "${GOPATH}/src/${PKG}"
+RUN go get -tags spell -u -v ./...
+
 RUN make
 
 FROM scratch
