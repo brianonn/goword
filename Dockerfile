@@ -10,18 +10,18 @@ RUN apt-get update -y \
             aspell \
             libaspell-dev
 
-ENV GOPATH=/go
+ENV GOPATH="/go"
 ENV PKG="github.com/brianonn/goword"
 ENV BRANCH="dockerize-it"
 RUN mkdir -p /go/src
 #RUN go get "${PKG}"
 ADD . "${GOPATH}/src/${PKG}"
 WORKDIR "${GOPATH}/src/${PKG}"
-RUN ls -l
 RUN go get -tags spell -u -v ./...
-RUN ls -l
 RUN make
-RUN ls -l
+
+RUN ls -ld /etc/ssl
+RUN ls -ld /etc/ssl/certs
 
 ##
 ## buld the final container
