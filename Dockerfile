@@ -23,9 +23,13 @@ RUN ls -l
 RUN make
 RUN ls -l
 
+##
+## buld the final container
+##
 FROM scratch
+
 COPY --from=builder ca-certificates.crt /etc/ssl/certs/
-COPY --from=builder /app/goword /goword
+COPY --from=builder "${GOPATH}/src/${PKG}"/goword /goword
 
 USER 1000:1000
 
