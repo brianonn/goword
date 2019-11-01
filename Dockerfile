@@ -1,6 +1,13 @@
 FROM golang:latest as builder
 RUN cat /etc/os-release
 
+RUN apt-get install -h
+
+RUN apt-get update -y \
+    && apt-get install -y \
+            hunspell \
+            aspell
+
 ENV GOPATH=/go
 ENV PKG="github.com/brianonn/goword"
 RUN mkdir -p /go/src
