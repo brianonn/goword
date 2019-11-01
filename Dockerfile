@@ -11,11 +11,14 @@ RUN apt-get update -y \
 
 ENV GOPATH=/go
 ENV PKG="github.com/brianonn/goword"
+ENV BRANCH="dockerize-it"
 RUN mkdir -p /go/src
 #RUN go get "${PKG}"
 ADD . "${GOPATH}/src/${PKG}"
 RUN cd "${GOPATH}/src/${PKG}"
 RUN go get -tags spell -u -v ./...
+
+RUN git checkout "${BRANCH}"
 
 RUN make
 
