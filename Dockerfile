@@ -31,4 +31,4 @@ RUN make && cp -pr ./goword /
 
 USER 1000:1000
 
-CMD ["/goword"]
+ENTRYPOINT ["/goword"]
