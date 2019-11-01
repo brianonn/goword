@@ -21,6 +21,7 @@ RUN ls -l
 RUN go get -tags spell -u -v ./...
 RUN ls -l
 RUN make
+RUN ls -l
 
 FROM scratch
 COPY --from=builder ca-certificates.crt /etc/ssl/certs/
