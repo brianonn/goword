@@ -6,7 +6,8 @@ RUN apt-get install -h
 RUN apt-get update -y \
     && apt-get install -y \
             hunspell \
-            aspell
+            aspell \
+            libaspell-dev
 
 ENV GOPATH=/go
 ENV PKG="github.com/brianonn/goword"
