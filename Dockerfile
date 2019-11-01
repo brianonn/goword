@@ -33,5 +33,5 @@ RUN make \
 
 USER 1000:1000
 
-ENTRYPOINT ["/goword"]
+ENTRYPOINT ["/goword", "-ignore-file", "/gowords.list"]
 CMD ["--help"]
