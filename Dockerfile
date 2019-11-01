@@ -6,6 +6,7 @@ RUN apt-get install -h
 RUN apt-get update -y \
     && apt-get install -y \
             hunspell \
+            libhunspell-dev \
             aspell \
             libaspell-dev
 
