@@ -28,6 +28,9 @@ RUN ls -ld /etc/ssl/certs
 ## buld the final container
 ##
 FROM scratch
+ENV GOPATH
+ENV PKG
+
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder "${GOPATH}/src/${PKG}"/goword /goword
