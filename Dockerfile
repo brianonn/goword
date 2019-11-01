@@ -16,7 +16,7 @@ ENV BRANCH="dockerize-it"
 RUN mkdir -p /go/src
 #RUN go get "${PKG}"
 ADD . "${GOPATH}/src/${PKG}"
-RUN cd "${GOPATH}/src/${PKG}"
+WORKDIR "${GOPATH}/src/${PKG}"
 RUN ls -l
 RUN go get -tags spell -u -v ./...
 RUN ls -l
