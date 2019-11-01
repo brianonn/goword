@@ -2,7 +2,7 @@
 all: goword
 
 SRCS=$(filter-out %_test.go, $(wildcard *.go */*.go))
-TESTSRCS=$(wildcard *_test.go */*_test.go) 
+TESTSRCS=$(wildcard *_test.go */*_test.go)
 
 goword: $(SRCS)
 	go build -tags spell -v
@@ -14,3 +14,6 @@ test: test.out
 
 test.out: goword $(TESTSRCS)
 	go test -tags spell -v >$@ 2>&1 || cat $@
+
+docker:
+	docker build -t goword:latest .
