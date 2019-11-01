@@ -7,3 +7,4 @@ SHA
 golang
 goroutine
 goroutines
+nolint

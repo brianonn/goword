@@ -19,7 +19,9 @@ RUN mkdir -p /go/src
 ADD . "${GOPATH}/src/${PKG}"
 WORKDIR "${GOPATH}/src/${PKG}"
 RUN go get -tags spell -u -v ./...
-RUN make && cp -pr ./goword /
+RUN make \
+    && cp -pr ./goword / \
+    && cp -pr gowords.list /
 
 # ##
 # ## buld the final container
@@ -32,3 +34,4 @@ RUN make && cp -pr ./goword /
 USER 1000:1000
 
 ENTRYPOINT ["/goword"]
+CMD ["--help"]
