@@ -5,6 +5,7 @@ RUN apt-get install -h
 
 RUN apt-get update -y \
     && apt-get install -y \
+            ca-certificates \
             hunspell \
             libhunspell-dev \
             aspell \
