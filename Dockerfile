@@ -24,7 +24,7 @@ RUN make && cp -pr ./goword /
 ##
 ## buld the final container
 ##
-FROM scratch
+FROM alpine:3.6
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /goword /goword
