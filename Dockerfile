@@ -17,10 +17,9 @@ RUN mkdir -p /go/src
 #RUN go get "${PKG}"
 ADD . "${GOPATH}/src/${PKG}"
 RUN cd "${GOPATH}/src/${PKG}"
+RUN ls -l
 RUN go get -tags spell -u -v ./...
-
-RUN git checkout "${BRANCH}"
-
+RUN ls -l
 RUN make
 
 FROM scratch
