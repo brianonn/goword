@@ -28,7 +28,7 @@ RUN ls -l
 ##
 FROM scratch
 
-COPY --from=builder ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder "${GOPATH}/src/${PKG}"/goword /goword
 
 USER 1000:1000
